@@ -1,8 +1,24 @@
-<h1>Welcome to rsml! </h1>
+{% load static %}
 
-...
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
-...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to rsml!</title>
+    <link rel="stylesheet" href = "{% static 'styles.css' %}">
+    
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">rsml</a>
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Cart</a>
+            <a href="#">About Us</a>
+        </nav>
+    </header>
+    
+</body>
+</html>
