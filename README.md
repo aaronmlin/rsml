@@ -71,3 +71,32 @@ HTML (Hypertext Markup Language)
 - Lebih fokus pada representasi visual dan struktural dari konten web
 
 ### 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern? ###
+Menurut artikel dari oracle.com, JSON lebih populer digunakan dalam pengembangan aplikasi web modern karena keunggulannya dalam kecepatan pertukaran data dan hasil-hasil layanan web. JSON juga lebih mudah ditulis dan dipahami, sehingga lebih sering digunakan daripada XML.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
+
+- [x] Membuat input `form` untuk menambahkan objek model pada app sebelumnya
+Untuk membuat suatu input form, pertama-tama saya membuat suatu file bernama `forms.py ` untuk membuat struktur form input yang akan digunakan. File tersebut akan berisi kode sebagai berikut.
+
+```
+from django.forms import ModelForm
+from main.models import Product
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ["name", "price", "description"]
+```
+`model = Product` adalah model yang digunakan untuk form. Hasil dari form akan disimpun dalam objek `Product`
+`fields` menunjukkan field dari model Product yang digunakan untuk form
+
+Pada file `views.py` saya juga menambahkan beberapa import module dari Django yang digunakan untuk setup form input. Termasuk   `HttpResponseRedirect`,  `ProductForm`, dan `reverse `
+Selanjutnya membuat _function_ baru dengan nama `create_product` yang menerima parameter request. Secara singkat, _function_ ini harus membuat suatu ProductForm baru berdasarkan input user, memvalidasi isi input form, menyimpannya, dan melakukan redirect setelah data form berhasil tersimpan.
+
+Perubahan juga terjadi pada _function_ `show_main`. Menambahkan beberapa baris kode yang bertujuan untuk mengambil seluruh object Product pada database. 
+
+Setelah itu, untuk mengakses perubahan pada `views.py` dan `forms.py`, saya juga  menambahkan _path url_ ke `urls.py`. Untuk melihat visualisai dari form input yang telah dibuat, saya membuat file HTML baru bernama `create_product.html`, yang akan dihubungkan dengan `main.html` dengan suatu reference `<a href="{% url 'main:create_product' %}"> `
+
+
+
+ 
