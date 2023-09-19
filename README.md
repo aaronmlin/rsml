@@ -1,5 +1,7 @@
 # Aaron Mario Lin - 2206082341 # 
 
+# Tugas 2 #
+
 ## rsml.adaptable.io ##
 ### 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
 
@@ -33,3 +35,39 @@ ViewModel --> Berperan juga sebagai perantara antara model dan view, ia akan men
 
 Perbedaan utama antara ketiganya adalah bagaimana tampilan dan logika bisnis dipisahkan dan bagaimana data dikomunikasikan antara mereka. MVC menggunakan Controller sebagai perantara antara Model dan View, MVT memisahkan tampilan dengan Template, sedangkan MVVM menggunakan ViewModel untuk menghubungkan Model dan View dengan cara yang lebih longgar dan memungkinkan tampilan untuk secara otomatis menanggapi perubahan dalam Model.
 
+
+
+# Tugas 3 #
+
+### 1. Apa perbedaan utama antara form POST dan form GET pada Django? ###
+Form POST:
+-Mengirim data ke server dalam badan permintaan HTTP
+-Bentuk data dikirimkan secara tersembunyi; tidak melalui URL. Sehingga lebih aman untuk mengirimkan data sensitif
+-Cocok digunakan untuk mengirim data-data besar
+-Umumnya digunakan untuk mengirimkan data yang akan memiliki perubahan pada server, contohnya form input
+
+Form GET:
+-Mengirimkan data ke server melalui query string --> ditambahkan ke URL
+-Bentuk data tidak tersembunyi; bebas dilihat untuk siapapun
+-Terdapat batasan jumlah data, sehingga tidak cocok untuk data-data besar
+-Umumnya digunakan untuk permintaan pencarian/pembacaan data dari server
+
+
+### 2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+XML (eXtensible Markup Language):
+-XML yaitu bahasa markup yang digunakan untuk mengirimkan bentuk data yang ter-hierarki dalam basis teks
+-Memiliki dukungan yang kuat dalam struktur data kompleks
+-Sering digunakan dalam pengiriman data antara aplikasi yang tidak hanya berbasis lewat web
+
+JSON (JavaScript Object Notation):
+-JSON adalah format pertukaran data yang ringan --> berbasis teks
+-Memiliki _syntax_ yang mudah dipahami manusia dan mudah diurai oleh mesin
+-Sering digunakan dalam pengembangan aplikasi web modern karena dapat digunakan untuk mengirimkan data antara aplikasi klien dan server
+-Tidak hanya dapat digunakan dalam JavaScript
+
+HTML (Hypertext Markup Language)
+-Suatu bahasa markup yang digunakan untuk membangun struktur dan tampilan halaman web
+-Tidak dirancang khusus untuk pertukaran data antar aplikasi, seperti XML dan JSON.
+-Lebih fokus pada representasi visual dan struktural dari konten web
+
+### 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern? ###
