@@ -97,6 +97,37 @@ Perubahan juga terjadi pada _function_ `show_main`. Menambahkan beberapa baris k
 
 Setelah itu, untuk mengakses perubahan pada `views.py` dan `forms.py`, saya juga  menambahkan _path url_ ke `urls.py`. Untuk melihat visualisai dari form input yang telah dibuat, saya membuat file HTML baru bernama `create_product.html`, yang akan dihubungkan dengan `main.html` dengan suatu reference `<a href="{% url 'main:create_product' %}"> `
 
+- [x] Tambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+
+Cara saya menerapkan poin ini adalah dengan pertama meng-import modul yang diperlukan, yaitu `HttpResponse` dan `Serializer`. Secara singkat, kelima _function_ baru tersebut menerima parameter `request`, menbambil data dari object Product, dan menggunakan modul Serializer untuk me-_return_ data sesuai dengan bentuk yang diinginkan. Saat ingin me-_request_ data dengan ID, saya menambahkan parameter id pada _function_ tersebut pula, serta mem-filter object berdasarkan id-nya. Contohnya:
+
+```
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+```
+
+```
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+```
 
 
- 
+ - [x] Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2.
+Untuk menyelesaikan tahap ini, pertama-tama saya mengimport semua _function_ ke file `urls.py`
+```
+from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+```
+Path yang ditambahkan pada file tersebut berupa:
+
+```
+urlpatterns = [
+    ...
+    path('xml/', show_xml, name='show_xml'), 
+    path('json/', show_json, name='show_json'),
+    path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),
+    ...
+]
+```
