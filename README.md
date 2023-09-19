@@ -16,20 +16,20 @@ Virtual environment digunakan dalam proyek ini untuk mengisolasi dependensi proy
 
 ### 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya. ###
 
--MVC (Model-View-Controller):
-Model --> Bertanggung jawab untuk memproses, menyimpan, serta mengelola data aplikasi dan logika bisnisnya. Bagian ini yang berurusan dengan pemrosesan data dan interaksi dengan basis data jika diperlukan.
-View --> Berperan sebagai suatu interface/tampilan yang akan menampilkan data ke pengguna aplikasi
-Controller --> Berperan sebagai penengah dari model dan view. Controller akan menerima input dari user, memprosesnya, dan memperbarui model sesuai input. Setelah itu, model memberi tahu pengontrol yang kemudian memperbarui tampilan. Controller bertanggung jawab untuk menjaga sinkronisasi antara model dan tampilan, dan ini merupakan salah satu prinsip utama dalam arsitektur MVC yang meningkatkan pemeliharaan dan pengujian aplikasi.
+1. MVC (Model-View-Controller):
+- Model --> Bertanggung jawab untuk memproses, menyimpan, serta mengelola data aplikasi dan logika bisnisnya. Bagian ini yang berurusan dengan pemrosesan data dan interaksi dengan basis data jika diperlukan.
+- View --> Berperan sebagai suatu interface/tampilan yang akan menampilkan data ke pengguna aplikasi
+- Controller --> Berperan sebagai penengah dari model dan view. Controller akan menerima input dari user, memprosesnya, dan memperbarui model sesuai input. Setelah itu, model memberi tahu pengontrol yang kemudian memperbarui tampilan. Controller bertanggung jawab untuk menjaga sinkronisasi antara model dan tampilan, dan ini merupakan salah satu prinsip utama dalam arsitektur MVC yang meningkatkan pemeliharaan dan pengujian aplikasi.
 
--MVT (Model-View-Template)
-Model --> Memiliki peran yang sama seperti model pada MVC
-View --> Menampilkan data pada pengguna, tetapi tidak terdapat logika bisnis
-Template --> Sebuah layer yang akan menangani seluruh bagian user interface
+2. MVT (Model-View-Template)
+- Model --> Memiliki peran yang sama seperti model pada MVC
+- View --> Menampilkan data pada pengguna, tetapi tidak terdapat logika bisnis
+- Template --> Sebuah layer yang akan menangani seluruh bagian user interface
 
--MVVM (Model-View-ViewModel)
-Model --> Memiliki peran yang sama seperti model pada MVC dan MVT
-View --> Menampilkan bagian user interface, umumnya pada MVVM menggunakan bahasa XAML
-ViewModel --> Berperan juga sebagai perantara antara model dan view, ia akan menyimpan kondisi view sekarang dan melaksanakan perintah untuk mengubah data di model untuk ditampilkan ke view
+3. MVVM (Model-View-ViewModel)
+- Model --> Memiliki peran yang sama seperti model pada MVC dan MVT
+- View --> Menampilkan bagian user interface, umumnya pada MVVM menggunakan bahasa XAML
+- ViewModel --> Berperan juga sebagai perantara antara model dan view, ia akan menyimpan kondisi view sekarang dan melaksanakan perintah untuk mengubah data di model untuk ditampilkan ke view
 
 ### Perbedaan ###
 
@@ -41,33 +41,33 @@ Perbedaan utama antara ketiganya adalah bagaimana tampilan dan logika bisnis dip
 
 ### 1. Apa perbedaan utama antara form POST dan form GET pada Django? ###
 Form POST:
--Mengirim data ke server dalam badan permintaan HTTP
--Bentuk data dikirimkan secara tersembunyi; tidak melalui URL. Sehingga lebih aman untuk mengirimkan data sensitif
--Cocok digunakan untuk mengirim data-data besar
--Umumnya digunakan untuk mengirimkan data yang akan memiliki perubahan pada server, contohnya form input
+- Mengirim data ke server dalam badan permintaan HTTP
+- Bentuk data dikirimkan secara tersembunyi; tidak melalui URL. Sehingga lebih aman untuk mengirimkan data sensitif
+- Cocok digunakan untuk mengirim data-data besar
+- Umumnya digunakan untuk mengirimkan data yang akan memiliki perubahan pada server, contohnya form input
 
 Form GET:
--Mengirimkan data ke server melalui query string --> ditambahkan ke URL
--Bentuk data tidak tersembunyi; bebas dilihat untuk siapapun
--Terdapat batasan jumlah data, sehingga tidak cocok untuk data-data besar
--Umumnya digunakan untuk permintaan pencarian/pembacaan data dari server
+- Mengirimkan data ke server melalui query string --> ditambahkan ke URL
+- Bentuk data tidak tersembunyi; bebas dilihat untuk siapapun
+- Terdapat batasan jumlah data, sehingga tidak cocok untuk data-data besar
+- Umumnya digunakan untuk permintaan pencarian/pembacaan data dari server
 
 
 ### 2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
 XML (eXtensible Markup Language):
--XML yaitu bahasa markup yang digunakan untuk mengirimkan bentuk data yang ter-hierarki dalam basis teks
--Memiliki dukungan yang kuat dalam struktur data kompleks
--Sering digunakan dalam pengiriman data antara aplikasi yang tidak hanya berbasis lewat web
+- XML yaitu bahasa markup yang digunakan untuk mengirimkan bentuk data yang ter-hierarki dalam basis teks
+- Memiliki dukungan yang kuat dalam struktur data kompleks
+- Sering digunakan dalam pengiriman data antara aplikasi yang tidak hanya berbasis lewat web
 
 JSON (JavaScript Object Notation):
--JSON adalah format pertukaran data yang ringan --> berbasis teks
--Memiliki _syntax_ yang mudah dipahami manusia dan mudah diurai oleh mesin
--Sering digunakan dalam pengembangan aplikasi web modern karena dapat digunakan untuk mengirimkan data antara aplikasi klien dan server
--Tidak hanya dapat digunakan dalam JavaScript
+- JSON adalah format pertukaran data yang ringan --> berbasis teks
+- Memiliki _syntax_ yang mudah dipahami manusia dan mudah diurai oleh mesin
+- Sering digunakan dalam pengembangan aplikasi web modern karena dapat digunakan untuk mengirimkan data antara aplikasi klien dan server
+- Tidak hanya dapat digunakan dalam JavaScript
 
 HTML (Hypertext Markup Language)
--Suatu bahasa markup yang digunakan untuk membangun struktur dan tampilan halaman web
--Tidak dirancang khusus untuk pertukaran data antar aplikasi, seperti XML dan JSON.
--Lebih fokus pada representasi visual dan struktural dari konten web
+- Suatu bahasa markup yang digunakan untuk membangun struktur dan tampilan halaman web
+- Tidak dirancang khusus untuk pertukaran data antar aplikasi, seperti XML dan JSON.
+- Lebih fokus pada representasi visual dan struktural dari konten web
 
 ### 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern? ###
