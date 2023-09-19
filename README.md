@@ -131,3 +131,13 @@ urlpatterns = [
     ...
 ]
 ```
+
+Dokumentasi Screenshot Request POSTMAN
+![image](https://github.com/aaronmlin/rsml/assets/113165742/b6e8836f-9974-439e-a8ee-f32a4e03db8a)
+
+
+![image](https://github.com/aaronmlin/rsml/assets/113165742/665516af-826e-4aeb-8a28-5f004e9009c2)
+
+![image](https://github.com/aaronmlin/rsml/assets/113165742/843a032f-c5cd-474a-a02b-3d6f13223e35)
+
+![image](https://github.com/aaronmlin/rsml/assets/113165742/2ee2226f-b4d9-40d7-91d1-0c3cc87b1496)
