@@ -106,6 +106,7 @@
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
+    <h2>Hari ini, kami menawarkan sebanyak {{counters}} produk baru! </h2>
     {% for product in products %}
         <tr>
             <td>{{product.name}}</td>
