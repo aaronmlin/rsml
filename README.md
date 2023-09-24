@@ -177,4 +177,23 @@ Cara Django menggunakan _cookies_ juga tak jauh berbeda dari aplikasi-aplikasi l
 Secara umum, suatu _cookie_ dari website yang ternama dapat dipercaya. Isi dari suatu _cookie_ tidak dapat digunakan untuk secara langsung mengidentifikasi suatu informasi penting, sementara lebih banyak digunakan supaya pengguna tidak perlu repot dalam menggunakan internet. _Cookies_ juga tidak bisa digunakan untuk men-_download_ suatu _malware_.
 
 
-
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
+- Menyalakan _virtual environment_
+- Mengimpor modul-modul yang diperlukan, salah satunya adalah `UserCreationForm`
+- Membuat suatu _function_ yang menerima request dari browser ke server. _Function_ ini kita namakan register
+- Membuat suatu file HTML yang menjadi tampilan dari form register yang telah dibuat
+- Mengimpor fungsi register ke dalam file `urls.py` , dan menambahkan _path url_ ke dalam `urlpatterns`
+- Mengulangi langkah-langkah yang sama untuk membuat login form. Kali ini, modul yang di-import adalah `authenticate` dan `login`
+- _Function_ yang dibuat dinamakan login_user
+- Mengulangi langkah yang sama untuk membuat logout, dan modul yang di-import adalah `logout`
+- Perbedaan terletak di pembuatan file HTML, kali ini logout hanya membutuhkan suatu _hyperlink tag_ di file `main.html`
+- Untuk otorisasi, menggunakan modul `login_required` untuk membatasi akses hanya pada pengguna yang sudah login. Koden ditambahkan pada `views.py` sebagai berikut:
+```
+@login_required(login_url='/login')
+def show_main(request):
+```
+- Selanjutnya, membuat dua akun (LANJUTIN)
+- Untuk menghubungkan model `Item` dengan `Product`, menambahkan import User ke dalam `models.py`, dan menambahkan kode untuk menghubungkan satu Item dengan User
+- Kemudian melakukan beberapa perubahan kepada `create_product` di `views.py` supaya Django mengenali bahwa objek yang sedang dibuat dimiliki oleh user tersebut.
+- Perubahan juga terjadi di `show_main` untuk hanya menunjukkan produk yang dimiliki oleh user tertentu
+- 
