@@ -144,3 +144,37 @@ Dokumentasi Screenshot Request POSTMAN
 ![image](https://github.com/aaronmlin/rsml/assets/113165742/843a032f-c5cd-474a-a02b-3d6f13223e35)
 
 ![image](https://github.com/aaronmlin/rsml/assets/113165742/2ee2226f-b4d9-40d7-91d1-0c3cc87b1496)
+
+
+# Tugas 4 #
+
+### 1. Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya? ###
+Django `UserCreationForm` adalah suatu fitur dari framework Django yang digunakan untuk membuat suatu profil user yang dapat menggunakan aplikasi yang telah kita buat. 
+
+## Keunggulan ##
+- Memberikan suatu _layer_ keamanan, karena pengguna yang register harus membuat username dan password
+- Lebih customizable
+
+## Kekurangan ###
+- Kurang fleksibel untuk aplikasi-aplikasi yang lebih kompleks
+- Tidak bisa diintegrasikan dengan autentikasi platform-platform lain, seperti email atau sosial media.
+
+
+### 2. Apa itu perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting? ###
+Framework Django mempunyai fitur di mana pemilik aplikasi dapat meng-handle baik autentikasi maupun otorisasi dari para pengguna-pengguna yang memakainya. Secara singkat, autentikasi lebih berfokus untuk memverifikasi apakah seorang user adalah benar-benar user tersebut. Sementara, otorisasi merupakan istilah untuk menandakan hal apa saja yang dapat dilakukan oleh user yang telah diautentikasi. Tentu hal keduanya penting untuk aspek-aspek keamanan. Tanpa autentikasi, akan banyak akun yang akan diretas oleh pengguna lain, dan tanpa otorisasi, pengguna dapat melihat data-data pribadi yang mungkin awalnya hanya boleh dilihat oleh admin/pemilik aplikasi saja.
+
+
+### 3. Apa itu _cookies_ dalam konteks aplikasi web, dan bagaimana Django menggunakan _cookies_ untuk mengelola data sesi pengguna? ###
+_Cookies_ berbentuk text file kecil yang berisi data-data penting suatu pengguna, seperti username dan password. Hal ini digunakan untuk mengidentifikasi suatu pengguna/perangkat pada yang tersambung pada suatu jaringan. Pada umumnya, _cookies_ digunakan untuk memperhalus dan meningkatkan kualitas pengalaman pengguna saat sedang _web browsing_. Ambil contoh, ketika kita pertama kali register/login suatu website, kadang kala akan ada muncul suatu _pop-up_ yang menanyakan apakah kita boleh mengakses _cookies_ atau tidak. 
+Cara Django menggunakan _cookies_ juga tak jauh berbeda dari aplikasi-aplikasi lain di internet:
+- [x] _Request_ dikirimkan ke server dari browser
+- [ ] Server men-_transmit_ response kepada browser beserta _cookies_
+- [ ] _Cookie_ yang diterima disimpan oleh server, dan setiap kali ada _request_ ke server oleh browser, _cookie_ tersebut juga turut dikirimkan
+- [ ] _Cookie_ akan dihapus dari browser saat _expired_
+
+
+### 4. Apakah penggunaan _cookies_ aman secara _default_ dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Secara umum, suatu _cookie_ dari website yang ternama dapat dipercaya. Isi dari suatu _cookie_ tidak dapat digunakan untuk secara langsung mengidentifikasi suatu informasi penting, sementara lebih banyak digunakan supaya pengguna tidak perlu repot dalam menggunakan internet. _Cookies_ juga tidak bisa digunakan untuk men-_download_ suatu _malware_.
+
+
+
