@@ -192,8 +192,8 @@ Secara umum, suatu _cookie_ dari website yang ternama dapat dipercaya. Isi dari 
 @login_required(login_url='/login')
 def show_main(request):
 ```
-- Selanjutnya, membuat dua akun (LANJUTIN)
+- Selanjutnya, membuat dua akun dan memasukkan beberapa data seperti yang tertera di soal
 - Untuk menghubungkan model `Item` dengan `Product`, menambahkan import User ke dalam `models.py`, dan menambahkan kode untuk menghubungkan satu Item dengan User
 - Kemudian melakukan beberapa perubahan kepada `create_product` di `views.py` supaya Django mengenali bahwa objek yang sedang dibuat dimiliki oleh user tersebut.
 - Perubahan juga terjadi di `show_main` untuk hanya menunjukkan produk yang dimiliki oleh user tertentu
-- 
+- Lakukan migrate dan runserver
