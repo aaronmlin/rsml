@@ -133,6 +133,9 @@ urlpatterns = [
 ```
 
 Dokumentasi Screenshot Request POSTMAN
+
+![image](https://github.com/aaronmlin/rsml/assets/113165742/65a00c4b-ac05-4d24-bb0f-b357aa9018be)
+
 ![image](https://github.com/aaronmlin/rsml/assets/113165742/b6e8836f-9974-439e-a8ee-f32a4e03db8a)
 
 
@@ -141,3 +144,56 @@ Dokumentasi Screenshot Request POSTMAN
 ![image](https://github.com/aaronmlin/rsml/assets/113165742/843a032f-c5cd-474a-a02b-3d6f13223e35)
 
 ![image](https://github.com/aaronmlin/rsml/assets/113165742/2ee2226f-b4d9-40d7-91d1-0c3cc87b1496)
+
+
+# Tugas 4 #
+
+### 1. Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya? ###
+Django `UserCreationForm` adalah suatu fitur dari framework Django yang digunakan untuk membuat suatu profil user yang dapat menggunakan aplikasi yang telah kita buat. 
+
+## Keunggulan ##
+- Memberikan suatu _layer_ keamanan, karena pengguna yang register harus membuat username dan password
+- Lebih customizable
+
+## Kekurangan ###
+- Kurang fleksibel untuk aplikasi-aplikasi yang lebih kompleks
+- Tidak bisa diintegrasikan dengan autentikasi platform-platform lain, seperti email atau sosial media.
+
+
+### 2. Apa itu perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting? ###
+Framework Django mempunyai fitur di mana pemilik aplikasi dapat meng-handle baik autentikasi maupun otorisasi dari para pengguna-pengguna yang memakainya. Secara singkat, autentikasi lebih berfokus untuk memverifikasi apakah seorang user adalah benar-benar user tersebut. Sementara, otorisasi merupakan istilah untuk menandakan hal apa saja yang dapat dilakukan oleh user yang telah diautentikasi. Tentu hal keduanya penting untuk aspek-aspek keamanan. Tanpa autentikasi, akan banyak akun yang akan diretas oleh pengguna lain, dan tanpa otorisasi, pengguna dapat melihat data-data pribadi yang mungkin awalnya hanya boleh dilihat oleh admin/pemilik aplikasi saja.
+
+
+### 3. Apa itu _cookies_ dalam konteks aplikasi web, dan bagaimana Django menggunakan _cookies_ untuk mengelola data sesi pengguna? ###
+_Cookies_ berbentuk text file kecil yang berisi data-data penting suatu pengguna, seperti username dan password. Hal ini digunakan untuk mengidentifikasi suatu pengguna/perangkat pada yang tersambung pada suatu jaringan. Pada umumnya, _cookies_ digunakan untuk memperhalus dan meningkatkan kualitas pengalaman pengguna saat sedang _web browsing_. Ambil contoh, ketika kita pertama kali register/login suatu website, kadang kala akan ada muncul suatu _pop-up_ yang menanyakan apakah kita boleh mengakses _cookies_ atau tidak. 
+Cara Django menggunakan _cookies_ juga tak jauh berbeda dari aplikasi-aplikasi lain di internet:
+- [x] _Request_ dikirimkan ke server dari browser
+- [ ] Server men-_transmit_ response kepada browser beserta _cookies_
+- [ ] _Cookie_ yang diterima disimpan oleh server, dan setiap kali ada _request_ ke server oleh browser, _cookie_ tersebut juga turut dikirimkan
+- [ ] _Cookie_ akan dihapus dari browser saat _expired_
+
+
+### 4. Apakah penggunaan _cookies_ aman secara _default_ dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Secara umum, suatu _cookie_ dari website yang ternama dapat dipercaya. Isi dari suatu _cookie_ tidak dapat digunakan untuk secara langsung mengidentifikasi suatu informasi penting, sementara lebih banyak digunakan supaya pengguna tidak perlu repot dalam menggunakan internet. _Cookies_ juga tidak bisa digunakan untuk men-_download_ suatu _malware_.
+
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
+- Menyalakan _virtual environment_
+- Mengimpor modul-modul yang diperlukan, salah satunya adalah `UserCreationForm`
+- Membuat suatu _function_ yang menerima request dari browser ke server. _Function_ ini kita namakan register
+- Membuat suatu file HTML yang menjadi tampilan dari form register yang telah dibuat
+- Mengimpor fungsi register ke dalam file `urls.py` , dan menambahkan _path url_ ke dalam `urlpatterns`
+- Mengulangi langkah-langkah yang sama untuk membuat login form. Kali ini, modul yang di-import adalah `authenticate` dan `login`
+- _Function_ yang dibuat dinamakan login_user
+- Mengulangi langkah yang sama untuk membuat logout, dan modul yang di-import adalah `logout`
+- Perbedaan terletak di pembuatan file HTML, kali ini logout hanya membutuhkan suatu _hyperlink tag_ di file `main.html`
+- Untuk otorisasi, menggunakan modul `login_required` untuk membatasi akses hanya pada pengguna yang sudah login. Koden ditambahkan pada `views.py` sebagai berikut:
+```
+@login_required(login_url='/login')
+def show_main(request):
+```
+- Selanjutnya, membuat dua akun (LANJUTIN)
+- Untuk menghubungkan model `Item` dengan `Product`, menambahkan import User ke dalam `models.py`, dan menambahkan kode untuk menghubungkan satu Item dengan User
+- Kemudian melakukan beberapa perubahan kepada `create_product` di `views.py` supaya Django mengenali bahwa objek yang sedang dibuat dimiliki oleh user tersebut.
+- Perubahan juga terjadi di `show_main` untuk hanya menunjukkan produk yang dimiliki oleh user tertentu
+- 
