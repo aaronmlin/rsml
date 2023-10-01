@@ -197,3 +197,23 @@ def show_main(request):
 - Kemudian melakukan beberapa perubahan kepada `create_product` di `views.py` supaya Django mengenali bahwa objek yang sedang dibuat dimiliki oleh user tersebut.
 - Perubahan juga terjadi di `show_main` untuk hanya menunjukkan produk yang dimiliki oleh user tertentu
 - Lakukan migrate dan runserver
+
+## Tugas 5 ##
+
+### 1. Jelaskan manfaat dari setiap ___element selector___ dan kapan waktu yang tepat untuk menggunakannya.
+Menurut w3schools.com,  CSS memiliki 5 jenis selector.
+
+- Simple selector 
+- Combinator selector
+- Pseudo-class selector
+- Pseudo-element selector
+- Attribute selector
+
+### 2. Jelaskan HTML5 Tag yang kamu ketahui ###
+
+Berikut beberapa HTML5 tag yang saya pernah gunakan:
+
+- `<link>` --> digunakan untuk menghubungkan file HTML dengan file eksternal
+- `<img>` --> merepresentasikan sebuah image
+- `<h1> - <h6>` --> ukuran heading
+- 
