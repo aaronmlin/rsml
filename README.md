@@ -241,3 +241,12 @@ Tailwind CSS:
 - Butuh ukuran file yang lebih kecil
 
 Bootstrap lebih cocok digunakan ketika proyek yang kita kerjakan lebih fokus di _back-end_, dan tema-tema serta tampilan yang tidak begitu kompleks. Sedangkan, ketika kita membuat suatu proyek yang lebih berfokus kepada _front-end_, _user interfaces_, dan tampilan-tampilan, maka Tailwind CSS-lah yang akan menjadi pilihan utama.
+
+### Jelaskan bagaimana kamu menerapkan checklist di atas secara step-by-step ###
+
+- [x] Menyalakan _virtual environment_
+- [ ] Membiasakan diri dan mempelajari basic syntax dan serba-serbi dari CSS, beserta Tailwind dan Bootstrap
+- [ ] Memilih untuk menggunakan Bootstrap karena terdapat banyak template yang sudah siap untuk digunakan
+- [ ] Membuat penyesuaian terhadap file-file html yang ingin diubah
+- [ ] Mencoba menggunakan external CSS dengan staticfiles tetapi belum berhasil
+- [ ] Melakukan git add, commit, dan push
