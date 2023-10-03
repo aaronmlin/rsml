@@ -192,8 +192,52 @@ Secara umum, suatu _cookie_ dari website yang ternama dapat dipercaya. Isi dari 
 @login_required(login_url='/login')
 def show_main(request):
 ```
-- Selanjutnya, membuat dua akun (LANJUTIN)
+- Selanjutnya, membuat dua akun dan memasukkan beberapa data seperti yang tertera di soal
 - Untuk menghubungkan model `Item` dengan `Product`, menambahkan import User ke dalam `models.py`, dan menambahkan kode untuk menghubungkan satu Item dengan User
 - Kemudian melakukan beberapa perubahan kepada `create_product` di `views.py` supaya Django mengenali bahwa objek yang sedang dibuat dimiliki oleh user tersebut.
 - Perubahan juga terjadi di `show_main` untuk hanya menunjukkan produk yang dimiliki oleh user tertentu
-- 
+- Lakukan migrate dan runserver
+
+## Tugas 5 ##
+
+### 1. Jelaskan manfaat dari setiap ___element selector___ dan kapan waktu yang tepat untuk menggunakannya.
+Menurut w3schools.com,  CSS memiliki 5 jenis selector.
+
+- Simple selector 
+- Combinator selector
+- Pseudo-class selector
+- Pseudo-element selector
+- Attribute selector
+
+### 2. Jelaskan HTML5 Tag yang kamu ketahui ###
+
+Berikut beberapa HTML5 tag yang saya pernah gunakan:
+
+- `<link>` --> digunakan untuk menghubungkan file HTML dengan file eksternal
+- `<img>` --> merepresentasikan sebuah image
+- `<h1> - <h6>` --> ukuran heading
+- `<nav>` --> merepresentasikan link-link navigasi yang dapat dituju
+- `<li> dan <ul>` --> _list_ dan _unordered list_
+- `<div>` --> merepresentasikan sebuah _division_ atau _section_ dalam sebuah HTML
+- `<form>` --> melambangkan form input
+
+### 3. Jelaskan perbedaan antara _margin_ dan _padding_ ###
+
+Secara singkat, _margin_ dalam CSS melambangkan suatu tempat kosong yang berada diluar _border_ suatu elemen. Sedangkan _padding_ melambangkan jarak antara suatu _border_ dari elemen dengan isi elemen tersebut
+
+### 4. Jelaskan perbedaan antara _framework_ CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya? ###
+
+Tailwind dan Bootstrap keduanya merupakan framework CSS yang sangat populer untuk digunakan. Berikut adalah beberapa perbedaan antar keduanya:
+
+Bootstrap:
+- Populer digunakan sebagai salah satu framework HTML, CSS, dan JavaScript untuk membuat aplikasi-aplikasi _mobile_ yang responsif
+- Menawarkan banyak tema dan template yang siap digunakan
+- Aplikasi yang dibuat dengan Bootstrap akan cenderung sama karena penggunaan template tersebut
+- Butuh ukuran file yang besar
+Tailwind CSS:
+- Hanya menawarkan framework CSS untuk membuat tampilan _user interface_ yang _customizable_
+- Menawarkan fitur-fitur yang mengutamakan utilitas
+- Aplikasi yang dibuat dengan Tailwind CSS lebih beragam dan fleksibel
+- Butuh ukuran file yang lebih kecil
+
+Bootstrap lebih cocok digunakan ketika proyek yang kita kerjakan lebih fokus di _back-end_, dan tema-tema serta tampilan yang tidak begitu kompleks. Sedangkan, ketika kita membuat suatu proyek yang lebih berfokus kepada _front-end_, _user interfaces_, dan tampilan-tampilan, maka Tailwind CSS-lah yang akan menjadi pilihan utama.
