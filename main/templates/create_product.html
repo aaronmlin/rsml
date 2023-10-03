@@ -1,6 +1,71 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #F9EBD2; /* Pastel Cream Background */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 24px;
+        color: #333; /* Dark Gray Text Color */
+        margin-bottom: 20px;
+    }
+
+    form {
+        background-color: #FFF; /* White Background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    tr {
+        margin-bottom: 10px;
+    }
+
+    td {
+        padding: 8px 0;
+    }
+
+    label {
+        font-weight: bold;
+        color: #555; /* Medium Gray Text Color */
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #CCC; /* Light Gray Border */
+        border-radius: 4px;
+    }
+
+    .add-product-button {
+        background-color: #FFAC55; /* Pastel Orange Button Color */
+        color: #FFF;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .add-product-button:hover {
+        background-color: #FF8C24; /* Hover Color */
+    }
+</style>
+
 <h1>Add New Product</h1>
 
 <form method="POST">
@@ -10,7 +75,7 @@
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Add Product"/>
+                <input  type="submit" value="Add Product" class="add-product-button"/>
             </td>
         </tr>
     </table>

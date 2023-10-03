@@ -19,14 +19,18 @@ from django.contrib.auth import authenticate, login, logout
 def show_main(request):
     products = Product.objects.all()
     counter = products.count()
+
+    if 'last_login' in request.COOKIES:
+        last_login = request.COOKIES['last_login']
+    else:
+        last_login = 'N/A'
     context = {
         'name': request.user.username, 
         'class': 'PBP F', 
         'products': products ,
         'counters' : counter ,
-        'last_login' : request.COOKIES['last_login']
+        'last_login' : last_login 
     }
-
     return render(request, "main.html", context)
 
 def create_product(request):
@@ -90,3 +94,24 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+
+def edit_product(request, id):
+    product = Product.objects.get(pk = id)
+
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    # Get data berdasarkan ID
+    product = Product.objects.get(pk = id)
+    # Hapus data
+    product.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
