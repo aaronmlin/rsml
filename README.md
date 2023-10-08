@@ -257,3 +257,13 @@ Dalam pemrograman, suatu hal yang sinkron berarti suatu peristiwa di mana suatu 
 
 ### 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini. ### 
 Maksud dari _event-driven programming_ adalah suatu paradigma dimana suatu entitas dapat berkomunikasi secara tidak langsung melalui pesan-pesan yang dikirimkan melalui suatu penengah. Paradigma ini adalah suatu bentuk _programming_ di mana flow suatu program akan ditentukan oleh kejadian/event yang berlaku. Secara singkat, program hanya akan melakukan eksekusi operasi ketika ada suatu event yang terjadi. 
+Pada tugas ini, kami membuat suatu tombol yang akan membuka modal untuk menambahkan produk pada aplikasi kami. Tombol itu akan men-trigger suatu request AJAX ketika ditekan. 
+
+### 3. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan. ###
+
+Perbedaan utama pada keduanya terletak pada fitur yang disebut sebagai Promises.
+Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX.
+Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
+
+
+
