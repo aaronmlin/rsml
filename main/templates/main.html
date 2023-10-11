@@ -52,40 +52,39 @@
         }
 
         .navbar a:hover {
-            color: #FFAC55; /* Pastel Orange Hover Color */
+            color: #FFAC55; 
         }
 
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            background-color: #FFF; /* White Background */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .card {
+            background-color: #FFF; 
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative; 
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            word-wrap: break-word;
+        .card-buttons {
+            position: absolute;
+            bottom: 0;
+            right: 0; 
+            margin: 10px;
         }
-
-        th {
-            background-color: #FFAC55; 
-            color: #FFF;
-        }
-
-        tr:nth-child(even) {
-            background-color: #F9EBD2; 
-        }
-        table tr:last-child {
+        .card:last-child {
             background-color: #FFD1A3; 
-
+        }
+        .last-card {
+            background-color: #FFD1A3; 
         }
 
         .edit-button, .delete-button {
-            background-color: #FFAC55; 
+            background-color: #FFAC55;
             color: #FFF;
             padding: 8px 12px;
             border: none;
@@ -94,30 +93,12 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            margin: 0 5px;
         }
 
         .edit-button:hover, .delete-button:hover {
-            background-color: #FF8C24; 
-        }
-
-        button {
-            background-color: #FFAC55;
-            color: #FFF;
-            padding: 10px 20px;
-            border: none;
-            text-decoration: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
             background-color: #FF8C24;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -132,37 +113,22 @@
         </ul>
     </div>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>
+    <h2>Hari ini, kami menawarkan sebanyak {{counters}} produk baru! </h2>
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-        <h2>Hari ini, kami menawarkan sebanyak {{counters}} produk baru! </h2>
+    <div class="card-grid">
         {% for product in products %}
-            <tr>
-                <td>
-                    {{product.name}}
-                </td>
-                <td>
-                    {{product.price}}
-                </td>
-                <td>
-                    {{product.description}}
-                </td>
-                <td>
-                    {{product.date_added}}
+            <div class="card">
+                <h3>{{product.name}}</h3>
+                <p>Price: {{product.price}}</p>
+                <p>Description: {{product.description}}</p>
+                <p>Date Added: {{product.date_added}}</p>
+                <div class="card-buttons">
                     <a href="{% url 'main:edit_product' product.pk %}" class="edit-button">Edit</a>
                     <a href="{% url 'main:delete_product' product.pk %}" class="delete-button">Delete</a>
-                </td>
-                </td>
-            </tr>
+                </div>
+            </div>
         {% endfor %}
-    </table>
+    </div>
 
     <div class="button-container">
         <a href="{% url 'main:create_product' %}">
