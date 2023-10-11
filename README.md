@@ -250,3 +250,20 @@ Bootstrap lebih cocok digunakan ketika proyek yang kita kerjakan lebih fokus di 
 - [ ] Membuat penyesuaian terhadap file-file html yang ingin diubah
 - [ ] Mencoba menggunakan external CSS dengan staticfiles tetapi belum berhasil
 - [ ] Melakukan git add, commit, dan push
+
+# Tugas 5 #
+### 1. Jelaskan perbedaan antara _asynchronous programming_ dengan _synchronous programming_ ###
+Dalam pemrograman, suatu hal yang sinkron berarti suatu peristiwa di mana suatu eksekusi operasi dijalankan secara _sequential_, yang artinya suatu operasi hanya akan dieksekusi setelah operasi sebelumnya selesai. Perbedaan utamanya terletak pada jumlah _thread_ yang digunakan oleh masing-masing jenis. _Synchronous programming_ menggunakan satu _thread_ dimana disitulah semua operasi dieksekusi secara berurutan. Sementara itu, _asynchronous programming_ menggunakan beberapa thread, di mana setiap operasi yang dieksekusi akan dilaporkan kembali kepada _main thread_ apabila ada suatu error atau operasi telah selesai. Hal ini berarti _thread_ yang lain juga terbuka untuk memproses _request_ lain.
+
+### 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini. ### 
+Maksud dari _event-driven programming_ adalah suatu paradigma dimana suatu entitas dapat berkomunikasi secara tidak langsung melalui pesan-pesan yang dikirimkan melalui suatu penengah. Paradigma ini adalah suatu bentuk _programming_ di mana flow suatu program akan ditentukan oleh kejadian/event yang berlaku. Secara singkat, program hanya akan melakukan eksekusi operasi ketika ada suatu event yang terjadi. 
+Pada tugas ini, kami membuat suatu tombol yang akan membuka modal untuk menambahkan produk pada aplikasi kami. Tombol itu akan men-trigger suatu request AJAX ketika ditekan. 
+
+### 3. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan. ###
+
+Perbedaan utama pada keduanya terletak pada fitur yang disebut sebagai Promises.
+Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX.
+Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
+
+
+
