@@ -19,7 +19,7 @@
         }
 
         .navbar {
-            background-color: #333; 
+            background-color: #e7a76e;
             color: #FFF; 
             padding: 10px 0;
             display: flex;
@@ -54,6 +54,23 @@
         .navbar a:hover {
             color: #FFAC55; 
         }
+        /* Center and style the welcome header */
+.welcome-header {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 28px; /* Adjust font size as needed */
+    margin: 20px 0; /* Add space above and below the header */
+}
+
+/* Style the product count header */
+.product-count-header {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 20px; /* Adjust font size as needed */
+    color: #555; /* Add a color to distinguish it from the main text */
+    margin: 20px 0; /* Add space above and below the header */
+}
+
 
         .card-grid {
             display: grid;
@@ -100,20 +117,67 @@
         .edit-button:hover, .delete-button:hover {
             background-color: #FF8C24;
         }
+
+        .add-product-button, .edit-button, .delete-button, .btn-primary {
+            background-color: #FFAC55;
+            color: #FFF;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin: 0 5px;
+        }
+            .add-product-button:hover, .edit-button:hover, .delete-button:hover, .btn-primary:hover {
+                background-color: #FF8C24;
+            }
+
+            table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #FFF; /* White Background */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        th {
+            background-color: #FFAC55; 
+            color: #FFF;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F9EBD2; 
+        }
+        table tr:last-child {
+            background-color: #FFD1A3; 
+
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="#" class="logo">rsml</a>
+        <a href="{% url 'main:login' %}" class="logo">rsml</a>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'main:login' %}">Home</a></li>
             <li><a href="#">Products</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/aaronmlin" target="_blank">Contact</a></li>
         </ul>
     </div>
+    <h2 class="welcome-header">Welcome to Aaron's yard sale!</h2>
+    <h2 class="product-count-header">Hari ini, kami menawarkan sebanyak {{counters}} produk baru!</h2>
 
-    <h2>Hari ini, kami menawarkan sebanyak {{counters}} produk baru! </h2>
 
     <div class="card-grid">
         {% for product in products %}
@@ -122,27 +186,164 @@
                 <p>Price: {{product.price}}</p>
                 <p>Description: {{product.description}}</p>
                 <p>Date Added: {{product.date_added}}</p>
-                <div class="card-buttons">
-                    <a href="{% url 'main:edit_product' product.pk %}" class="edit-button">Edit</a>
-                    <a href="{% url 'main:delete_product' product.pk %}" class="delete-button">Delete</a>
-                </div>
+            
             </div>
         {% endfor %}
     </div>
-
-    <div class="button-container">
-        <a href="{% url 'main:create_product' %}">
-            <button>Add New Product</button>
-        </a>
-
-        <br />
-
-        <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-        <a href="{% url 'main:logout' %}">
-            <button>Logout</button>
-        </a>
+    <h2 class="product-count-header">Enjoy our selection of products!</h2>
+    <div class="table-view">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.date_added }}</td>
+                        <td>
+                            <a href="{% url 'main:edit_product' product.pk %}" class="edit-button">Edit</a>
+                            <a href="{% url 'main:delete_product' product.pk %}" class="delete-button">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+   
+
+    <div class="button-container" style="text-align: center;">
+        <a href="{% url 'main:create_product' %}">
+            <button class="edit-button" style="margin: 10px;">Add New Product</button>
+        </a>
+    
+        <h5 style="margin: 10px;">Sesi terakhir login: {{ last_login }}</h5>
+    
+        <a href="{% url 'main:logout' %}">
+            <button class="delete-button" style="margin: 10px;">Logout</button>
+        </a>
+    
+        <a href="#" class="add-product-button" data-bs-toggle="modal" data-bs-target="#addProductModal" style="margin: 10px;">Add with AJAX</a>
+    </div>
+    
+    
+    
+
+    <!-- Modal for Adding a New Product -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addProductModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 </body>
 </html>
+
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addProduct
+
+
+    async function refreshProducts() {
+    const productCard = document.getElementById("product_card");
+    productCard.innerHTML = "";
+
+    const products = await getProducts();
+
+    products.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.backgroundColor = "#FFF";
+        card.style.borderRadius = "8px";
+        card.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+        card.style.padding = "20px";
+        card.style.position = "relative";
+
+        card.innerHTML = `
+            <img class="card-img" src="${item.fields.image_url}" alt="Product Image">
+            <h3 style="margin: 20px 0px; font-size: 24px; font-weight: 700;">${item.fields.name}</h3>
+            <p style="margin: 0px 0px; font-size: 16px; font-weight: 500; margin-bottom: 8px">By: ${item.fields.artist}</p>
+            <a class="add-product-button add-card-button" href="${item.fields.detail}" target="_blank" rel="noopener noreferrer">See Detail</a>
+        `;
+
+        productCard.appendChild(card);
+    });
+}
+
+async function refreshProductCards() {
+    const productCardContainer = document.getElementById("product_card");
+    productCardContainer.innerHTML = "Loading..."; 
+
+    try {
+        const response = await fetch("{% url 'main:get_product_json' %}");
+        if (response.ok) {
+            const products = await response.json();
+            const productCardHTML = products.map((product) => `
+                <div class="card">
+                    <!-- Your card content here -->
+                </div>
+            `).join('');
+            productCardContainer.innerHTML = productCardHTML;
+        } else {
+            productCardContainer.innerHTML = "Failed to load products.";
+        }
+    } catch (error) {
+        productCardContainer.innerHTML = "An error occurred while fetching data.";
+        console.error(error);
+    }
+}
+
+</script>
+
+
+
 {% endblock content %}
