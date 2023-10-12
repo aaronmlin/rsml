@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login')
 def show_main(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(user=request.user)
     counter = products.count()
 
     if 'last_login' in request.COOKIES:
@@ -108,9 +108,12 @@ def delete_product(request, id):
     product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
 
+
+@login_required(login_url='/login')
 def get_product_json(request):
-    product_item = Product.objects.all()
+    product_item = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', product_item))
+
 
 
 @csrf_exempt
@@ -128,3 +131,10 @@ def add_product_ajax(request):
 
     return HttpResponseNotFound()
 
+
+@csrf_exempt
+def remove_product_ajax(request, id):
+    Product.objects.filter(pk=id).delete()
+    return HttpResponseRedirect(reverse("main:show_main"))
+
+    

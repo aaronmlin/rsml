@@ -54,29 +54,30 @@
         .navbar a:hover {
             color: #FFAC55; 
         }
-        /* Center and style the welcome header */
-.welcome-header {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-size: 28px; /* Adjust font size as needed */
-    margin: 20px 0; /* Add space above and below the header */
-}
 
-/* Style the product count header */
-.product-count-header {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-size: 20px; /* Adjust font size as needed */
-    color: #555; /* Add a color to distinguish it from the main text */
-    margin: 20px 0; /* Add space above and below the header */
-}
+        .welcome-header {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 28px; /* Adjust font size as needed */
+            margin: 20px 0; /* Add space above and below the header */
+        }
+
+        /* Style the product count header */
+        .product-count-header {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 20px; /* Adjust font size as needed */
+            color: #555; /* Add a color to distinguish it from the main text */
+            margin: 20px 0; /* Add space above and below the header */
+        }
 
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 20px;
+        
         }
 
         .card {
@@ -179,44 +180,14 @@
     <h2 class="product-count-header">Hari ini, kami menawarkan sebanyak {{counters}} produk baru!</h2>
 
 
-    <div class="card-grid">
-        {% for product in products %}
-            <div class="card">
-                <h3>{{product.name}}</h3>
-                <p>Price: {{product.price}}</p>
-                <p>Description: {{product.description}}</p>
-                <p>Date Added: {{product.date_added}}</p>
-            
-            </div>
-        {% endfor %}
+    <div class="card">
+        <div id="product_card"></div>
     </div>
+    
     <h2 class="product-count-header">Enjoy our selection of products!</h2>
     <div class="table-view">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Date Added</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>{{ product.date_added }}</td>
-                        <td>
-                            <a href="{% url 'main:edit_product' product.pk %}" class="edit-button">Edit</a>
-                            <a href="{% url 'main:delete_product' product.pk %}" class="delete-button">Delete</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <table id="product_table"></table>
+
     </div>
    
 
@@ -235,9 +206,6 @@
     </div>
     
     
-    
-
-    <!-- Modal for Adding a New Product -->
     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -284,7 +252,7 @@
         fetch("{% url 'main:add_product_ajax' %}", {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
-        }).then(refreshProducts)
+        }).then(refreshProducts).then(refreshCard)
 
         document.getElementById("form").reset()
         return false
@@ -293,54 +261,65 @@
     document.getElementById("button_add").onclick = addProduct
 
 
-    async function refreshProducts() {
-    const productCard = document.getElementById("product_card");
-    productCard.innerHTML = "";
 
+
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+            <td>
+                <a href="/edit-product/${item.pk}" class="edit-button">Edit</a>
+                <a href="/remove_product_ajax/${item.pk}" class="delete-button">Delete</a>
+            </td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    async function refreshCard() {
+    const cardContainer = document.getElementById("product_card");
+    cardContainer.innerHTML = "";
     const products = await getProducts();
 
     products.forEach((item) => {
         const card = document.createElement("div");
-        card.className = "card";
-        card.style.backgroundColor = "#FFF";
-        card.style.borderRadius = "8px";
-        card.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
-        card.style.padding = "20px";
-        card.style.position = "relative";
-
+        card.className = "card"; 
         card.innerHTML = `
-            <img class="card-img" src="${item.fields.image_url}" alt="Product Image">
             <h3 style="margin: 20px 0px; font-size: 24px; font-weight: 700;">${item.fields.name}</h3>
-            <p style="margin: 0px 0px; font-size: 16px; font-weight: 500; margin-bottom: 8px">By: ${item.fields.artist}</p>
+            <p style="font-size: 18px; font-weight: 500; margin-bottom: 8px;">Price: ${item.fields.price}</p>
+            <p style="font-size: 16px;">Description: ${item.fields.description}</p>
+            <p style="font-size: 14px;">Date Added: ${item.fields.date_added}</p>
             <a class="add-product-button add-card-button" href="${item.fields.detail}" target="_blank" rel="noopener noreferrer">See Detail</a>
         `;
 
-        productCard.appendChild(card);
+        cardContainer.appendChild(card);
     });
 }
 
-async function refreshProductCards() {
-    const productCardContainer = document.getElementById("product_card");
-    productCardContainer.innerHTML = "Loading..."; 
+refreshCard();
+    function delete_product_ajax(ID) {
+            fetch(`/remove_product_ajax/${ID}`, {
+                method: 'DELETE',
+            }).then(refreshProducts).then(cardsProduct)
+            }
+        document.getElementById("add-button").onclick = addProduct
 
-    try {
-        const response = await fetch("{% url 'main:get_product_json' %}");
-        if (response.ok) {
-            const products = await response.json();
-            const productCardHTML = products.map((product) => `
-                <div class="card">
-                    <!-- Your card content here -->
-                </div>
-            `).join('');
-            productCardContainer.innerHTML = productCardHTML;
-        } else {
-            productCardContainer.innerHTML = "Failed to load products.";
-        }
-    } catch (error) {
-        productCardContainer.innerHTML = "An error occurred while fetching data.";
-        console.error(error);
-    }
-}
+
+
 
 </script>
 
