@@ -2,7 +2,8 @@
 
 # Tugas 2 #
 
-## rsml.adaptable.io ##
+# aaron-mario-tugas-pbp.cs.ui.ac.id #
+
 ### 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
 
 Tutorial tentu banyak membantu saya dalam mengerjakan tugas kali ini, tetapi saya juga mengalokasikan sedikit waktu untuk memahami bagaimana cara kerja Django framework, dan version control git pula. Saya menantang diri saya untuk membaca ulang tutorial dari awal sampai akhir, lalu mencoba untuk mengerjakan tugas ini tanpa sambil melihatnya sama sekali. Untungnya, pada percobaan pertama sudah berhasil. Suatu bantuan tambahan juga didapatkan dari internet ketika mencapai tahap dimana saya sedikit bingung
@@ -277,7 +278,14 @@ Asynchronous programming pada AJAX adalah kemampuan untuk menjalankan operasi ta
 - [ ] Selanjutnya, saya juga menambahkan parameter `@login_required` diatas function `get_product_json` di `views.py` supaya card tetap menampilkan data-data yang sesuai
 - [ ] Untuk menambahkan modal Add Product With AJAX, saya menggunakan template kode yang terdapat di tutorial.
 - [ ] Kemudian menambahkan `add_product_ajax` di `views.py` dengan `@csrf_exempt` supaya terikat dengan token user, dan menambahkan pathing URLnya di `urls.py`
-- [ ] 
-- [ ] 
+- [ ] Karena AJAX melakukan _asynchronous_ selanjutnya saya menambahkan async func refreshProducts dan refreshCard di bagian script main.html. Untuk refreshProducts melakukan refresh di bagian table, dan refreshCards melakukan refresh di bagian Card
+- [ ] Saya melihat contoh kode dari tutorial, dan mengotak-atiknya supaya sesuai dengan CSS yang saya gunakan pada table dan card
+- [ ] Untuk bagian yang bonus, jalan kerjanya sama seperti add with AJAX. Saya membuat function baru di `views.py` yang menerima request dan ID, lengkap dengan `@csrf_exempt` dan menambahkan pathing URLnya.
+- [ ] Kemudian, saya menambahkan JavaScript di main untuk me-redirect eventListener ke dalam function yang telah saya buat, dan menambahkannya di modal button yang baru diubah
+- [ ] Terakhir, karena saya tidak menggunakan staticfiles di aplikasi saya, maka saya tidak melakukan perintah collectstatic.
+- [ ] Add-commit-push
+
+
+# aaron-mario-tugas-pbp.cs.ui.ac.id #
 
 
