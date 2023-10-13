@@ -262,8 +262,22 @@ Pada tugas ini, kami membuat suatu tombol yang akan membuka modal untuk menambah
 ### 3. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan. ###
 
 Perbedaan utama pada keduanya terletak pada fitur yang disebut sebagai Promises.
-Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX.
-Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
+Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX. Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
 
+
+### 4. Jelaskan konsep _asynchronous programming_ dengan AJAX ###
+
+Asynchronous programming pada AJAX adalah kemampuan untuk menjalankan operasi tanpa harus menunggu respons dari server sebelum melanjutkan eksekusi program, memungkinkan pengiriman permintaan ke server dan pengolahan respons secara asinkron. Hal ini memungkinkan aplikasi web untuk tetap responsif dan interaktif saat berkomunikasi dengan server tanpa menghentikan eksekusi program. Ini meningkatkan efisiensi dan pengalaman pengguna.
+
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
+
+- [x] Menyalakan _virtual environment_
+- [ ] Pertama-tama, melakukan konversi data yang ada di main.html untuk mendukung AJAX GET. Hal ini dilakukan dengan cara mengubah beberapa kode di bagian _table_ dan _card_ supaya dapat diimplementasi dengan AJAX
+- [ ] Selanjutnya, saya juga menambahkan parameter `@login_required` diatas function `get_product_json` di `views.py` supaya card tetap menampilkan data-data yang sesuai
+- [ ] Untuk menambahkan modal Add Product With AJAX, saya menggunakan template kode yang terdapat di tutorial.
+- [ ] Kemudian menambahkan `add_product_ajax` di `views.py` dengan `@csrf_exempt` supaya terikat dengan token user, dan menambahkan pathing URLnya di `urls.py`
+- [ ] 
+- [ ] 
 
 
