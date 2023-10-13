@@ -2,7 +2,8 @@
 
 # Tugas 2 #
 
-## rsml.adaptable.io ##
+# aaron-mario-tugas-pbp.cs.ui.ac.id #
+
 ### 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
 
 Tutorial tentu banyak membantu saya dalam mengerjakan tugas kali ini, tetapi saya juga mengalokasikan sedikit waktu untuk memahami bagaimana cara kerja Django framework, dan version control git pula. Saya menantang diri saya untuk membaca ulang tutorial dari awal sampai akhir, lalu mencoba untuk mengerjakan tugas ini tanpa sambil melihatnya sama sekali. Untungnya, pada percobaan pertama sudah berhasil. Suatu bantuan tambahan juga didapatkan dari internet ketika mencapai tahap dimana saya sedikit bingung
@@ -262,8 +263,29 @@ Pada tugas ini, kami membuat suatu tombol yang akan membuka modal untuk menambah
 ### 3. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan. ###
 
 Perbedaan utama pada keduanya terletak pada fitur yang disebut sebagai Promises.
-Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX.
-Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
+Fetch API menggunakan Promises, yang memungkinkan kita untuk mengelola permintaan HTTP secara lebih efisien dengan sintaksis yang lebih modern. Ini membantu dalam menghindari callback hell (nested callback functions) dan membuat kode lebih mudah dipahami. Sementara jQuery lebih mengandalkan callback untuk menangani request dari AJAX. Menurut saya, teknologi yang lebih baik digunakan adalah Fetch API, karena ia tidak akan me-_reject_ suatu request HTTP apabila ada status error, alih-alih menyelesaikan amsalahnya sendiri. Seiring perkembangan JS pula, penggunaan Fetch dan Promises lebih dianjurkan
 
+
+### 4. Jelaskan konsep _asynchronous programming_ dengan AJAX ###
+
+Asynchronous programming pada AJAX adalah kemampuan untuk menjalankan operasi tanpa harus menunggu respons dari server sebelum melanjutkan eksekusi program, memungkinkan pengiriman permintaan ke server dan pengolahan respons secara asinkron. Hal ini memungkinkan aplikasi web untuk tetap responsif dan interaktif saat berkomunikasi dengan server tanpa menghentikan eksekusi program. Ini meningkatkan efisiensi dan pengalaman pengguna.
+
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). ###
+
+- [x] Menyalakan _virtual environment_
+- [ ] Pertama-tama, melakukan konversi data yang ada di main.html untuk mendukung AJAX GET. Hal ini dilakukan dengan cara mengubah beberapa kode di bagian _table_ dan _card_ supaya dapat diimplementasi dengan AJAX
+- [ ] Selanjutnya, saya juga menambahkan parameter `@login_required` diatas function `get_product_json` di `views.py` supaya card tetap menampilkan data-data yang sesuai
+- [ ] Untuk menambahkan modal Add Product With AJAX, saya menggunakan template kode yang terdapat di tutorial.
+- [ ] Kemudian menambahkan `add_product_ajax` di `views.py` dengan `@csrf_exempt` supaya terikat dengan token user, dan menambahkan pathing URLnya di `urls.py`
+- [ ] Karena AJAX melakukan _asynchronous_ selanjutnya saya menambahkan async func refreshProducts dan refreshCard di bagian script main.html. Untuk refreshProducts melakukan refresh di bagian table, dan refreshCards melakukan refresh di bagian Card
+- [ ] Saya melihat contoh kode dari tutorial, dan mengotak-atiknya supaya sesuai dengan CSS yang saya gunakan pada table dan card
+- [ ] Untuk bagian yang bonus, jalan kerjanya sama seperti add with AJAX. Saya membuat function baru di `views.py` yang menerima request dan ID, lengkap dengan `@csrf_exempt` dan menambahkan pathing URLnya.
+- [ ] Kemudian, saya menambahkan JavaScript di main untuk me-redirect eventListener ke dalam function yang telah saya buat, dan menambahkannya di modal button yang baru diubah
+- [ ] Terakhir, karena saya tidak menggunakan staticfiles di aplikasi saya, maka saya tidak melakukan perintah collectstatic.
+- [ ] Add-commit-push
+
+
+# aaron-mario-tugas-pbp.cs.ui.ac.id #
 
 
